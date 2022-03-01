@@ -1,0 +1,51 @@
+export const stateBorders = {
+  id: "state-borders",
+  type: "line",
+  source: "states",
+  layout: {},
+  paint: {
+    "line-color": "dodgerblue",
+    "line-width": 1,
+  },
+};
+
+export const fillStates = {
+  id: "fill-states",
+  type: "fill",
+  source: "states",
+  layout: {},
+  // filter: ["==", "AN", true],
+  paint: {
+    "fill-opacity": [
+      "case",
+      ["boolean", ["feature-state", "hover"], false],
+      0.7,
+      0.2,
+    ],
+    "fill-color": [
+      "interpolate",
+      ["linear"],
+      ["get", "ID_1"],
+      0,
+      "#F2F12D",
+      10,
+      "red",
+      20,
+      "green",
+      21,
+      "yellow",
+      30,
+      "dodgerblue",
+      40,
+      "pink",
+      50,
+      "skyblue",
+      100,
+      "#A25626",
+      110,
+      "#8B4225",
+      120,
+      "#723122",
+    ],
+  },
+};
