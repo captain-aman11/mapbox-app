@@ -31,7 +31,6 @@ function MapIndia() {
   const handleMouseMove = (event) => {
     console.log(event);
     const {
-      features,
       point: { x, y },
     } = event;
 
@@ -67,8 +66,6 @@ function MapIndia() {
 }
 
 function ToolTip({ currentState }) {
-  if (!currentState?.properties) return null;
-
   return (
     <>
       <div
