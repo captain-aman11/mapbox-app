@@ -3,6 +3,7 @@ import Map, { Source, Layer, FullscreenControl } from "react-map-gl";
 import { accessToken } from "../config/config";
 import { indiaGeoJSON } from "../config/geoJSON";
 import { stateBorders, fillStates } from "./mapLayers";
+import ToolTip from "./ToolTip";
 
 function MapIndia() {
   //Controlled Map
@@ -51,6 +52,7 @@ function MapIndia() {
         onMove={(e) => setViewState(e.viewState)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        interactiveLayerIds={["fill-states"]}
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={accessToken}
@@ -62,27 +64,6 @@ function MapIndia() {
         <ToolTip currentState={hoverDetails} />
         <FullscreenControl />
       </Map>
-    </>
-  );
-}
-
-function ToolTip({ currentState }) {
-  return (
-    <>
-      <div
-        className="tooltip"
-        style={{
-          left: parseFloat(currentState.x + 10),
-          top: parseFloat(currentState.y + 10),
-          position: "absolute",
-          zIndex: 8,
-          backgroundColor: "#fff",
-          padding: "4px",
-          transition: "all 0.7 ease-in-out",
-        }}
-      >
-        <p>{`${currentState.properties.NAME_1}, ${currentState.properties.NAME_0}`}</p>
-      </div>
     </>
   );
 }
